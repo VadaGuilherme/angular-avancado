@@ -51,7 +51,11 @@ export class ProdutoService {
         }];
     }
 
-    obterTodos(): Produto[] {
+    obterTodos(estado: string): Produto[] {
+        if (estado === 'ativos') {
+            return this.produtos.filter(p => p.ativo);
+        }
+
         return this.produtos;
     }
 
