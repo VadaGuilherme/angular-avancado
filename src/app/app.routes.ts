@@ -6,6 +6,7 @@ import { CadastroComponent } from './demos/reactiveForms/cadastro/cadastro.compo
 import { NotFoundComponent } from './navegacao/not-found/not-found.component';
 import { AuthGuard } from './services/app.guard';
 import { CadastroGuard } from './services/cadastro.guard';
+import { FilmesComponent } from './demos/pipes/filmes/filmes.component';
 
 const rootRouterConfig: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const rootRouterConfig: Routes = [
     { path: 'cadastro', component: CadastroComponent, canDeactivate: [CadastroGuard] },
     { path: 'produtos', loadChildren: () => import('./demos/arquitetura-componentes/produto.module').then(m => m.ProdutoModule) },
     { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canLoad: [AuthGuard], canActivate: [AuthGuard] },
+    { path: 'filmes', component: FilmesComponent },
 
     { path: '**', component: NotFoundComponent }
 ];
