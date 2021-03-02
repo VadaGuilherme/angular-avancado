@@ -29,6 +29,12 @@ export class MenuComponent {
       name: 'Sobre',
       exact: true,
       admin: false
+    },
+    {
+      link: '/admin',
+      name: 'Admin',
+      exact: true,
+      admin: false
     }
   ]
 }

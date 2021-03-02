@@ -23,6 +23,8 @@ export class CadastroComponent implements OnInit, AfterViewInit {
   genericValidator: GenericValidator;
   displayMessage: DisplayMessage = {};
 
+  mudancasNaoSalvas: boolean;
+
   constructor(private formBuilder: FormBuilder) {
     this.validationMessages = {
       nome: {
@@ -72,10 +74,13 @@ export class CadastroComponent implements OnInit, AfterViewInit {
 
     merge(...controlBlurs).subscribe(() => {
       this.displayMessage = this.genericValidator.processarMensagens(this.cadastroForm);
+      this.mudancasNaoSalvas = true;
     });
   }
 
   adicionarUsuario() {
     this.usuario = Object.assign({}, this.usuario, this.cadastroForm.value);
+
+    this.mudancasNaoSalvas = false;
   }
 }
