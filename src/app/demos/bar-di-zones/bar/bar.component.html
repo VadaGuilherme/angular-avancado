@@ -12,4 +12,13 @@
     <div>
         Bebidas 2: {{ barBebida2 }}
     </div>
+    &nbsp;
+    &nbsp;
+    <h2>Progress: {{progress}}%</h2>
+    <p *ngIf="progress >= 100">Done progressing {{label}} of Angular zone!</p>
+
+    <a href="javascript:void(0)" class="btn btn-success" (click)="processWithinAngularZone()">Processar dentro da Zona
+        do Angular</a> &nbsp;
+    <a href="javascript:void(0)" class="btn btn-danger" (click)="processOutsideOfAngularZone()">Processar fora da Zona
+        do Angular</a>
 </div>
