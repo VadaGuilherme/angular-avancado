@@ -6,17 +6,19 @@
     <table class="table table-striped">
         <tbody>
             <tr *ngFor="let item of list; index as i">
-                <td>
+                <td class="text-left">
                     <span>{{ item.nome }}</span>
-
-                    <span *ngIf="!item.finalizado && item.iniciado" class="task-list__finalizado"
-                        (click)="toggleItem(i, 'finalizar')"></span>
-                    <span *ngIf="!item.finalizado && !item.iniciado" class="task-list__iniciado"
-                        (click)="toggleItem(i, 'iniciar')"></span>
-                    <span *ngIf="item.finalizado && !item.iniciado" class="task-list__retroceder"
-                        (click)="toggleItem(i, 'retomar')"></span>
-                    <span *ngIf="!item.finalizado && item.iniciado" class="task-list__retroceder"
-                        (click)="toggleItem(i, 'cancelar')"></span>
+                </td>
+                <td class="text-right">
+                    <img class="task-list-icon" *ngIf="item.finalizado && !item.iniciado"
+                        src="/assets/retroceder_ativo.png" (click)="toggleItem(i, 'retomar')">
+                    <img class="task-list-icon" *ngIf="!item.finalizado && item.iniciado"
+                        src="/assets/retroceder_ativo.png" (click)="toggleItem(i, 'cancelar')">
+                    <img class="task-list-icon" *ngIf="!item.finalizado && !item.iniciado"
+                        src="/assets/iniciar_ativo.png" (click)="toggleItem(i, 'iniciar')">
+                    <img class="task-list-icon" *ngIf="!item.finalizado && item.iniciado" src="/assets/parar_ativo.png"
+                        (click)="toggleItem(i, 'finalizar')">
+                    <img class="task-list-icon" src="/assets/lixo.png" (click)="excluir(item.id)">
                 </td>
             </tr>
         </tbody>
